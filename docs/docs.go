@@ -29,8 +29,8 @@ var doc = `{
     "basePath": "{{.BasePath}}",
     "paths": {
         "/": {
-            "get": {
-                "description": "show message \"welcome\"",
+            "post": {
+                "description": "Show message",
                 "consumes": [
                     "application/json"
                 ],
@@ -38,9 +38,20 @@ var doc = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Message"
+                    "Show message"
                 ],
-                "summary": "show message \"welcome\"",
+                "summary": "Show message",
+                "parameters": [
+                    {
+                        "description": "Show Body message",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/main.Greetings"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -48,6 +59,16 @@ var doc = `{
                             "type": "string"
                         }
                     }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "main.Greetings": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
                 }
             }
         }
