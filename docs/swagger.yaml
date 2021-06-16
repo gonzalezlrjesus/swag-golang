@@ -1,0 +1,27 @@
+basePath: /
+host: localhost:3000
+info:
+  contact:
+    email: gonzalezlrjesus@gmail.com
+    name: Jesus Gonzalez
+    url: https://github.com/gonzalezlrjesus
+  description: This is a sample to understand how swag works
+  title: Jesus Gonzalez's Swagger Example API
+  version: "0.1"
+paths:
+  /:
+    get:
+      consumes:
+      - application/json
+      description: show message "welcome"
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: show message "welcome"
+      tags:
+      - Message
+swagger: "2.0"

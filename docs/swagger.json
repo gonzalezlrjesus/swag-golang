@@ -1,0 +1,40 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a sample to understand how swag works",
+        "title": "Jesus Gonzalez's Swagger Example API",
+        "contact": {
+            "name": "Jesus Gonzalez",
+            "url": "https://github.com/gonzalezlrjesus",
+            "email": "gonzalezlrjesus@gmail.com"
+        },
+        "version": "0.1"
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "paths": {
+        "/": {
+            "get": {
+                "description": "show message \"welcome\"",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Message"
+                ],
+                "summary": "show message \"welcome\"",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
