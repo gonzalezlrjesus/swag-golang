@@ -1,4 +1,10 @@
 basePath: /
+definitions:
+  main.Greetings:
+    properties:
+      message:
+        type: string
+    type: object
 host: localhost:3000
 info:
   contact:
@@ -10,10 +16,17 @@ info:
   version: "0.1"
 paths:
   /:
-    get:
+    post:
       consumes:
       - application/json
-      description: show message "welcome"
+      description: Show message
+      parameters:
+      - description: Show Body message
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/main.Greetings'
       produces:
       - application/json
       responses:
@@ -21,7 +34,7 @@ paths:
           description: OK
           schema:
             type: string
-      summary: show message "welcome"
+      summary: Show message
       tags:
-      - Message
+      - Show message
 swagger: "2.0"
