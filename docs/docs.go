@@ -50,6 +50,13 @@ var doc = `{
                         "schema": {
                             "$ref": "#/definitions/handlers.Greetings"
                         }
+                    },
+                    {
+                        "type": "string",
+                        "description": "Basic token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
                     }
                 ],
                 "responses": {
