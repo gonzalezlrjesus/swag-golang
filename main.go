@@ -1,21 +1,17 @@
 package main
 
 import (
-	"encoding/json"
 	"net/http"
 
 	_ "gonzalezlrjesus/swag-golang/docs"
+
+	"gonzalezlrjesus/swag-golang/handlers"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/cors"
 	httpSwagger "github.com/swaggo/http-swagger"
 )
-
-// Greetings struct
-type Greetings struct {
-	Message string `json:"message"`
-}
 
 // @title Jesus Gonzalez's Swagger Example API
 // @version 0.1
@@ -42,30 +38,9 @@ func main() {
 	})
 	r.Use(cors.Handler)
 
-	r.Post("/", ShowMessage)
+	r.Post("/", handlers.ShowMessage)
 	r.Get("/swagger/*", httpSwagger.Handler(
 		httpSwagger.URL("http://localhost:3000/swagger/doc.json"), //The url pointing to API definition"
 	))
 	http.ListenAndServe(":3000", r)
-}
-
-// ShowMessage POST
-// @tags Show message
-// @Summary Show message
-// @Description Show message
-// @Accept  json
-// @Produce  json
-// @Param data body Greetings true "Show Body message"
-// @Success 200 {object} string
-// @Router /  [post]
-func ShowMessage(w http.ResponseWriter, r *http.Request) {
-	data := &Greetings{}
-	err := json.NewDecoder(r.Body).Decode(&data)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusBadRequest)
-		return
-	}
-
-	// Do something with the Person struct...
-	json.NewEncoder(w).Encode(data.Message)
 }

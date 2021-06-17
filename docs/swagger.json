@@ -33,7 +33,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/main.Greetings"
+                            "$ref": "#/definitions/handlers.Greetings"
                         }
                     }
                 ],
@@ -49,7 +49,7 @@
         }
     },
     "definitions": {
-        "main.Greetings": {
+        "handlers.Greetings": {
             "type": "object",
             "properties": {
                 "message": {

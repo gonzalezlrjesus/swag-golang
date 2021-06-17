@@ -48,7 +48,7 @@ var doc = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/main.Greetings"
+                            "$ref": "#/definitions/handlers.Greetings"
                         }
                     }
                 ],
@@ -64,7 +64,7 @@ var doc = `{
         }
     },
     "definitions": {
-        "main.Greetings": {
+        "handlers.Greetings": {
             "type": "object",
             "properties": {
                 "message": {
