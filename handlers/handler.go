@@ -3,6 +3,7 @@ package handlers
 import (
 	"encoding/json"
 	"net/http"
+	"strings"
 )
 
 // Greetings struct
@@ -19,7 +20,9 @@ type Greetings struct {
 // @Accept  json
 // @Produce  json
 // @Param data body Greetings true "Show Body message"
+// @Param Authorization header string true "Basic token"
 // @Success 200 {object} string
+// @SecuritySchemes BasicAuth
 // @Router /  [post]
 // 	func ShowMessage(w http.ResponseWriter, r *http.Request) {
 // 		data := &Greetings{}
@@ -31,6 +34,7 @@ type Greetings struct {
 // 		json.NewEncoder(w).Encode(data.Message)
 // 	}
 func ShowMessage(w http.ResponseWriter, r *http.Request) {
+
 	data := &Greetings{}
 	err := json.NewDecoder(r.Body).Decode(&data)
 	if err != nil {
@@ -38,5 +42,9 @@ func ShowMessage(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	reqToken := r.Header.Get("Authorization")
+	splitToken := strings.Split(strings.ToLower(reqToken), "basic")
+
+	data.Message = data.Message + " - TOKEN: " + strings.TrimSpace(splitToken[1])
 	json.NewEncoder(w).Encode(data.Message)
 }
