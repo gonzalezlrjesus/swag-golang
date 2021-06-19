@@ -5,7 +5,7 @@ run:
 	go run main.go
 
 docker-build:
-	docker build -t swag-golang .
+	docker build -t gonzalezlrjesus/swag-golang .
 
 docker-run:
-	docker container run -p 3000:3000 swag-golang
+	docker container run -p 3000:3000 gonzalezlrjesus/swag-golang
