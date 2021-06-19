@@ -4,9 +4,9 @@ import (
 	"net/http"
 	"os"
 
-	_ "gonzalezlrjesus/swag-golang/docs"
+	_ "github.com/gonzalezlrjesus/swag-golang/docs"
 
-	"gonzalezlrjesus/swag-golang/handlers"
+	"github.com/gonzalezlrjesus/swag-golang/handlers"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
