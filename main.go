@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+	"os"
 
 	_ "gonzalezlrjesus/swag-golang/docs"
 
@@ -27,6 +28,12 @@ func main() {
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
 
+	// Server port reading
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "3000" //localhost
+	}
+
 	cors := cors.New(cors.Options{
 		AllowedOrigins: []string{"*"},
 		// AllowOriginFunc:  func(r *http.Request, origin string) bool { return true },
@@ -40,7 +47,7 @@ func main() {
 
 	r.Post("/", handlers.ShowMessage)
 	r.Get("/swagger/*", httpSwagger.Handler(
-		httpSwagger.URL("http://localhost:3000/swagger/doc.json"), //The url pointing to API definition"
+		httpSwagger.URL("./swagger/doc.json"), //The url pointing to API definition"
 	))
-	http.ListenAndServe(":3000", r)
+	http.ListenAndServe(":"+port, r)
 }
