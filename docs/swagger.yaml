@@ -5,7 +5,7 @@ definitions:
       message:
         type: string
     type: object
-host: https://swag-golang.herokuapp.com
+host: swag-golang.herokuapp.com
 info:
   contact:
     email: gonzalezlrjesus@gmail.com

@@ -22,7 +22,7 @@ import (
 // @contact.url https://github.com/gonzalezlrjesus
 // @contact.email gonzalezlrjesus@gmail.com
 
-// @host https://swag-golang.herokuapp.com
+// @host swag-golang.herokuapp.com
 // @BasePath /
 func main() {
 	r := chi.NewRouter()
