@@ -1,4 +1,4 @@
-module gonzalezlrjesus/swag-golang
+module github.com/gonzalezlrjesus/swag-golang
 
 // +heroku goVersion go1.16
 go 1.16
