@@ -94,7 +94,7 @@ type swaggerInfo struct {
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = swaggerInfo{
 	Version:     "0.1",
-	Host:        "localhost:3000",
+	Host:        "https://swag-golang.herokuapp.com",
 	BasePath:    "/",
 	Schemes:     []string{},
 	Title:       "Jesus Gonzalez's Swagger Example API",
