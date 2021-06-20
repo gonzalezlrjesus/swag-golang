@@ -1,4 +1,5 @@
 # swag-golang
+![Go Reference](https://pkg.go.dev/badge/github.com/gonzalezlrjesus/swag-golang.svg)
 ![Heroku](https://heroku-badge.herokuapp.com/?app=swag-golang&root=swagger/index.html)
 ![Docker](https://img.shields.io/docker/automated/gonzalezlrjesus/swag-golang)
 
