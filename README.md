@@ -1,6 +1,7 @@
 # swag-golang
-![Go Reference](https://pkg.go.dev/badge/github.com/gonzalezlrjesus/swag-golang.svg)
-![Heroku](https://heroku-badge.herokuapp.com/?app=swag-golang&root=swagger/index.html)
+[![Go Report Card](https://goreportcard.com/badge/github.com/gonzalezlrjesus/swag-golang)](https://goreportcard.com/report/github.com/gonzalezlrjesus/swag-golang)
+[![Go Reference](https://pkg.go.dev/badge/github.com/gonzalezlrjesus/swag-golang.svg)](https://pkg.go.dev/github.com/gonzalezlrjesus/swag-golang)
+[![Heroku](https://heroku-badge.herokuapp.com/?app=swag-golang&root=swagger/index.html)](https://heroku-badge.herokuapp.com/?app=swag-golang&root=swagger/index.html)
 ![Docker](https://img.shields.io/docker/automated/gonzalezlrjesus/swag-golang)
 
 ### :pushpin:[Live testing](https://swag-golang.herokuapp.com/swagger/index.html)
