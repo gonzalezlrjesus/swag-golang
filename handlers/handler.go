@@ -2,13 +2,14 @@ package handlers
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
 	"strings"
 )
 
 // Greetings struct
 // string
-// type Greetings string
+// type Greetings string.
 type Greetings struct {
 	Message string `json:"message"`
 }
@@ -34,11 +35,10 @@ type Greetings struct {
 // 		json.NewEncoder(w).Encode(data.Message)
 // 	}
 func ShowMessage(w http.ResponseWriter, r *http.Request) {
-
-	data := &Greetings{}
-	err := json.NewDecoder(r.Body).Decode(&data)
-	if err != nil {
+	data := &Greetings{Message: ""}
+	if err := json.NewDecoder(r.Body).Decode(&data); err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
+
 		return
 	}
 
@@ -46,5 +46,11 @@ func ShowMessage(w http.ResponseWriter, r *http.Request) {
 	splitToken := strings.Split(strings.ToLower(reqToken), "basic")
 
 	data.Message = data.Message + " - TOKEN: " + strings.TrimSpace(splitToken[1])
-	json.NewEncoder(w).Encode(data.Message)
+	if err := json.NewEncoder(w).Encode(data.Message); err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+
+		return
+	}
+
+	log.Println("ending ShowMessage")
 }

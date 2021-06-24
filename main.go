@@ -1,10 +1,11 @@
 package main
 
 import (
+	"log"
 	"net/http"
 	"os"
 
-	_ "github.com/gonzalezlrjesus/swag-golang/docs"
+	docs "github.com/gonzalezlrjesus/swag-golang/docs"
 
 	"github.com/gonzalezlrjesus/swag-golang/handlers"
 
@@ -13,6 +14,10 @@ import (
 	"github.com/go-chi/cors"
 	httpSwagger "github.com/swaggo/http-swagger"
 )
+
+func init() {
+	docs.Register()
+}
 
 // @title Jesus Gonzalez's Swagger Example API
 // @version 0.1
@@ -23,15 +28,16 @@ import (
 // @contact.email gonzalezlrjesus@gmail.com
 
 // @host swag-golang.herokuapp.com
-// @BasePath /
+// @BasePath /.
 func main() {
+	maxAge := 300
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
 
 	// Server port reading
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "3000" //localhost
+		port = "3000" // localhost
 	}
 
 	cors := cors.New(cors.Options{
@@ -41,13 +47,20 @@ func main() {
 		AllowedHeaders:   []string{"Accept", "Authorization", "Content-Type", "X-CSRF-Token"},
 		ExposedHeaders:   []string{"Link"},
 		AllowCredentials: true,
-		MaxAge:           300, // Maximum value not ignored by any of major browsers
+		MaxAge:           maxAge, // Maximum value not ignored by any of major browsers
 	})
 	r.Use(cors.Handler)
 
 	r.Post("/", handlers.ShowMessage)
 	r.Get("/swagger/*", httpSwagger.Handler(
-		httpSwagger.URL("./swagger/doc.json"), //The url pointing to API definition"
+		httpSwagger.URL("./swagger/doc.json"), // The url pointing to API definition"
 	))
-	http.ListenAndServe(":"+port, r)
+
+	if err := http.ListenAndServe(":"+port, r); err != nil {
+		os.Exit(1)
+
+		return
+	}
+
+	log.Println("Ending main func")
 }
