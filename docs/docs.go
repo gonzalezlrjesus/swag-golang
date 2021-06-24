@@ -125,6 +125,7 @@ func (s *s) ReadDoc() string {
 	return tpl.String()
 }
 
-func init() {
+// Register .
+func Register() {
 	swag.Register(swag.Name, &s{})
 }
