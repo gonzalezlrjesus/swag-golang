@@ -5,19 +5,14 @@ import (
 	"net/http"
 	"os"
 
-	docs "github.com/gonzalezlrjesus/swag-golang/docs"
-
 	"github.com/gonzalezlrjesus/swag-golang/handlers"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/cors"
+	_ "github.com/gonzalezlrjesus/swag-golang/docs"
 	httpSwagger "github.com/swaggo/http-swagger"
 )
-
-func init() {
-	docs.Register()
-}
 
 // @title Jesus Gonzalez's Swagger Example API
 // @version 0.1
@@ -27,8 +22,8 @@ func init() {
 // @contact.url https://github.com/gonzalezlrjesus
 // @contact.email gonzalezlrjesus@gmail.com
 
-// @host swag-golang.herokuapp.com
-// @BasePath /.
+// @host localhost:3000
+// @BasePath /
 func main() {
 	maxAge := 300
 	r := chi.NewRouter()

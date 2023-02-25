@@ -10,7 +10,7 @@
         },
         "version": "0.1"
     },
-    "host": "swag-golang.herokuapp.com",
+    "host": "localhost:3000",
     "basePath": "/",
     "paths": {
         "/": {

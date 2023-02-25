@@ -25,15 +25,16 @@ type Greetings struct {
 // @Success 200 {object} string
 // @SecuritySchemes BasicAuth
 // @Router /  [post]
-// 	func ShowMessage(w http.ResponseWriter, r *http.Request) {
-// 		data := &Greetings{}
-// 		err := json.NewDecoder(r.Body).Decode(&data)
-// 		f err != nil {
-// 			http.Error(w, err.Error(), http.StatusBadRequest)
-// 			return
-// 		}
-// 		json.NewEncoder(w).Encode(data.Message)
-// 	}
+//
+//	func ShowMessage(w http.ResponseWriter, r *http.Request) {
+//		data := &Greetings{}
+//		err := json.NewDecoder(r.Body).Decode(&data)
+//		f err != nil {
+//			http.Error(w, err.Error(), http.StatusBadRequest)
+//			return
+//		}
+//		json.NewEncoder(w).Encode(data.Message)
+//	}
 func ShowMessage(w http.ResponseWriter, r *http.Request) {
 	data := &Greetings{Message: ""}
 	if err := json.NewDecoder(r.Body).Decode(&data); err != nil {
@@ -45,7 +46,7 @@ func ShowMessage(w http.ResponseWriter, r *http.Request) {
 	reqToken := r.Header.Get("Authorization")
 	splitToken := strings.Split(strings.ToLower(reqToken), "basic")
 
-	data.Message = data.Message + " - TOKEN: " + strings.TrimSpace(splitToken[1])
+	data.Message = data.Message + " - TOKEN: " + strings.TrimSpace(splitToken[0])
 	if err := json.NewEncoder(w).Encode(data.Message); err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 
