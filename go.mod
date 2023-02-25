@@ -12,6 +12,6 @@ require (
 	github.com/go-openapi/swag v0.19.15 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/swaggo/http-swagger v1.3.3
-	github.com/swaggo/swag v1.8.1
+	github.com/swaggo/swag v1.8.10
 	golang.org/x/net v0.7.0 // indirect
 )
