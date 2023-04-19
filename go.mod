@@ -10,8 +10,5 @@ require (
 	github.com/go-openapi/spec v0.20.8 // indirect
 	github.com/swaggo/files v1.0.0 // indirect
 	github.com/swaggo/http-swagger v1.3.3
-	github.com/swaggo/http-swagger/example/go-chi v0.0.0-20220809182543-c8d62bfd8fdb
-	github.com/swaggo/swag v1.8.10
-	golang.org/x/net v0.7.0 // indirect
-	golang.org/x/tools v0.6.0 // indirect
+	github.com/swaggo/swag v1.16.1
 )
